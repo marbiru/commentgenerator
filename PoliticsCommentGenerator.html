@@ -1,0 +1,74 @@
+<html>
+<body>
+   <!--maybe divs and stuff in here-->
+</body>
+<script type="text/javascript">
+   //javascript goes in here
+   
+   //sentence opener: need tuples, so that grammar can be maintained for "If there's one --> it's that" and "Surely the --> is that" etc
+   var sentence_opener_list = [["If there's one ", " it's that "], ["Surely the ", " is that "], ["One could certainly argue that the ", " is that "]];
+   var random_sentence_opener = sentence_opener_list[Math.floor(Math.random() * sentence_opener_list.length)];
+   
+   var key_emphasis_list = ['key ', 'primary ', 'main ', '', '', ''];
+   var random_key_emphasis = key_emphasis_list[Math.floor(Math.random() * key_emphasis_list.length)];
+   
+   var lesson_learned_list = ['lesson-learned', 'take-home', 'point to consider'];
+   var random_lesson_learned = lesson_learned_list[Math.floor(Math.random() * lesson_learned_list.length)];
+   
+   var historical_event_list = ['Iraq War', 'Arab Spring', 'French Revolution', 'fall of Rome', 'Wikileaks crisis', 'DOMA hearings'];
+   var random_historical_event = historical_event_list[Math.floor(Math.random() * historical_event_list.length)];
+   
+   var political_value_list = ['peace', 'justice', 'equality', 'fraternity', 'democracy', 'liberty'];
+   var random_political_value = political_value_list[Math.floor(Math.random() * political_value_list.length)];
+   
+   var ejected_political_value = political_value_list.indexOf(random_political_value);
+   if(ejected_political_value != -1) {
+	political_value_list.splice(ejected_political_value, 1);
+   };
+   var random_political_value_2 = political_value_list[Math.floor(Math.random() * political_value_list.length)];
+
+   var although_synonyms_list = [', although ', ', though ', ', while '];
+   var random_although_synonym = although_synonyms_list[Math.floor(Math.random() * although_synonyms_list.length)];
+   
+   var comparative_adjective_list = ['complementary', 'interchangeable', 'compatible', 'harmonious'];
+   var random_comparative_adjective = comparative_adjective_list[Math.floor(Math.random() * comparative_adjective_list.length)];
+
+   var empty_prevarications_list = [' in theory', ' in principle', ' (in the abstract)'];
+   var random_empty_prevarication = empty_prevarications_list[Math.floor(Math.random() * empty_prevarications_list.length)];
+
+   var not_always_list = [[', are not always ',''], [', are not necessarily ',''], [', cannot be relied upon to be ', ' in practice'], [', will not (in all cases) be ', ' in practice']];
+   var random_not_always = not_always_list[Math.floor(Math.random() * not_always_list.length)];
+
+   var ejected_comparative_adjective = comparative_adjective_list.indexOf(random_comparative_adjective);
+   if(ejected_comparative_adjective != -1) {
+	comparative_adjective_list.splice(ejected_comparative_adjective, 1);
+   }
+   var random_comparative_adjective_2 = comparative_adjective_list[Math.floor(Math.random() * comparative_adjective_list.length)];
+
+ 
+   document.write(random_sentence_opener[0].fontsize(5))
+   document.write(random_key_emphasis.fontsize(5))
+   document.write(random_lesson_learned.fontsize(5))
+   document.write(" from the ".fontsize(5))
+   document.write(random_historical_event.fontsize(5))
+   document.write(random_sentence_opener[1].fontsize(5))
+   document.write(random_political_value.fontsize(5))
+   document.write(" and ".fontsize(5))
+   document.write(random_political_value_2.fontsize(5))
+   document.write(random_although_synonym.fontsize(5))
+   document.write(random_comparative_adjective.fontsize(5))
+   document.write(random_empty_prevarication.fontsize(5))
+   document.write(random_not_always[0].fontsize(5))
+   document.write(random_comparative_adjective_2.fontsize(5))
+   document.write(random_not_always[1].fontsize(5))
+   document.write(".".fontsize(5))
+   
+   
+   /* Additional Randomisers (to insert throughout)
+   the prevarications should also be a tuple: ("", "in theory") and (theoretically, "")
+   var empty_prevarications_list = ['in theory', 'in principle', 'theoretically', 'perhaps'];
+   var random_empty_prevarication = empty_prevarications_list[Math.floor(Math.random() * empty_prevarications_list.length)];
+   */
+   
+</script>
+</html>
