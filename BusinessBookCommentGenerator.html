@@ -1,0 +1,111 @@
+<html>
+<body>
+   <!--maybe divs and stuff in here-->
+</body>
+<script type="text/javascript">
+   //javascript goes in here
+   
+   
+   //making random variable from list
+   function make_random_var(list) {
+       return list[Math.floor(Math.random() * list.length)];
+       }
+    
+       var business_opener_list = ['The secret to doing business is ', 'Our revolutionary framework focusses on ', 'Our key insight is centered on ', 'It turns out that all successful businesses understand '];
+       
+       var random_business_opener = make_random_var(business_opener_list);
+       
+   
+   //texts
+
+   
+   var acronym_list_1 = ['Big', 'Huge', 'Great']
+   var random_acronym_1 = acronym_list_1[Math.floor(Math.random() * acronym_list_1.length)];
+   
+   var acronym_list_2 = ['Big', 'Huge', 'Great', 'Bold']
+     var random_acronym_2 = acronym_list_2[Math.floor(Math.random() * acronym_list_2.length)];
+     
+   var acronym_list_3 = ['Audacious', 'Effective', 'Outrageous']
+     var random_acronym_3 = acronym_list_3[Math.floor(Math.random() * acronym_list_3.length)];
+     
+   var acronym_list_4 = ['Goals', 'Targets', 'Objectives'];
+     var random_acronym_4 = acronym_list_4[Math.floor(Math.random() * acronym_list_4.length)];
+     
+   //This could be improved (in terms of coding-learning) by making a system whereby the acronym can have different numbers of letters, and the variable is able to deal with that. How would that work? Maybe the randomiser decides whether a "position" is included in the list, and then the words that are going into the acronym are put in another list, and then we iterate over that second list and run through to the end.
+   //honestly it will also probably work if we just put empty strings as an option for some of the acronym-positions, because ''[0] should just not return anything.
+   //ok, not quite, because ''[0] is undefined. But could solve that with something like if [varposition] != undefined then...
+   
+   var random_acronym = random_acronym_1[0] + random_acronym_2[0] + random_acronym_3[0] + random_acronym_4[0]
+   
+   //a single list with some ridiculous elements at the end, but a slight tweak to the randomiser means that the ridiculous elements won't get included until a little later -- but elegantly!
+   
+   var p_word_list = ['price', 'promotion', 'profit', 'productivity', 'power', 'proactiveness', 'peasants', 'pterodactyls'];
+   var random_p_word = p_word_list[Math.floor(Math.random() * (p_word_list.length - 2))];
+   
+  var ejected_p_word = p_word_list.indexOf(random_p_word);
+   if(ejected_p_word != -1) {
+	p_word_list.splice(ejected_p_word, 1);
+   };
+   var random_p_word_2 = p_word_list[Math.floor(Math.random() * (p_word_list.length - 2))];
+   
+    var ejected_p_word_2 = p_word_list.indexOf(random_p_word_2);
+   if(ejected_p_word_2 != -1) {
+	p_word_list.splice(ejected_p_word_2, 1);
+   };
+   var random_p_word_3 = p_word_list[Math.floor((p_word_list.length - 2) + Math.random() * 2)];
+   
+   var p_word_sentence = " the three p's: " + random_p_word + ", " + random_p_word_2 + ", and " + random_p_word_3
+   
+      var m_word_list = ['marketing', 'message', 'motive', 'motivation', 'mission', 'monkeys', 'monks'];
+   var random_m_word = m_word_list[Math.floor(Math.random() * (m_word_list.length - 2))];
+   
+  var ejected_m_word = m_word_list.indexOf(random_m_word);
+   if(ejected_m_word != -1) {
+	m_word_list.splice(ejected_m_word, 1);
+   };
+   var random_m_word_2 = m_word_list[Math.floor(Math.random() * (m_word_list.length - 2))];
+   
+    var ejected_m_word_2 = m_word_list.indexOf(random_m_word_2);
+   if(ejected_m_word_2 != -1) {
+	m_word_list.splice(ejected_m_word_2, 1);
+   };
+   var random_m_word_3 = m_word_list[Math.floor((m_word_list.length - 2) + Math.random() * 2)];
+   
+   var m_word_sentence = " the three m's: " + random_m_word + ", " + random_m_word_2 + ", and " + random_m_word_3
+   
+   var letter_list = [0,1]
+   var p_or_m = letter_list[Math.floor(Math.random() * 2)];
+
+    if (p_or_m == 0){
+      p_or_m_sentence = p_word_sentence
+      }else{
+      p_or_m_sentence = m_word_sentence
+      };
+   
+/*   //tuples
+   var sentence_opener_list = [["If there's one ", " it's that "], ["Surely the ", " is that "], ["One could certainly argue that the ", " is that "]];
+   var random_sentence_opener = sentence_opener_list[Math.floor(Math.random() * sentence_opener_list.length)];
+   
+   //normal
+   var key_emphasis_list = ['key ', 'primary ', 'main ', '', '', ''];
+   var random_key_emphasis = key_emphasis_list[Math.floor(Math.random() * key_emphasis_list.length)];
+   
+   //ejection
+   var ejected_political_value = political_value_list.indexOf(random_political_value);
+   if(ejected_political_value != -1) {
+	political_value_list.splice(ejected_political_value, 1);
+   };
+   var random_political_value_2 = political_value_list[Math.floor(Math.random() * political_value_list.length)]; */
+
+//clearly wasteful way to do this -- how to just get math-random to pick a number for me?
+   var choice_list = [0,1]
+   var choice = choice_list[Math.floor(Math.random() * 2)];
+   
+   if (choice == 0) {
+   document.write(('"' + random_business_opener + random_acronym + "s -- " + random_acronym_1 + " " + random_acronym_2 + " " + random_acronym_3 + " " + random_acronym_4 + ".\"").fontsize(5))
+   }else{
+   document.write(('"' + random_business_opener + p_or_m_sentence +  ".\"").fontsize(5))
+   };
+   
+</script>
+</html>
