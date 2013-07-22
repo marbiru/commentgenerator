@@ -1,0 +1,45 @@
+<html>
+<body>
+   <!--maybe divs and stuff in here-->
+</body>
+<script type="text/javascript">
+   //javascript goes in here
+   
+   
+   //making random variable from list
+   function make_random_var(list) {
+       return list[Math.floor(Math.random() * list.length)];
+       }
+    
+       var investigating_list = ['investigating', 'understanding', 'modelling', 'researching'];
+       
+       var random_investigating = make_random_var(investigating_list);
+    
+       var science_opener_list = ['By ' + random_investigating + ' the behaviour of'];
+       
+       var random_science_opener = make_random_var(science_opener_list);
+       
+       var research_animal_list = ['naked mole rats', 'drosophila embryos', 'the ebola virus', 'chlamydia', 'c. elegans'];
+       
+       var random_research_animal = make_random_var(research_animal_list);
+       
+       var connective = 'under';
+       
+       var intervention_list = ['parental pressure', 'fire', 'a microscope', 'the influence', 'torture', 'nutrient deprivation', 'dehydration'];
+       
+       var random_intervention = make_random_var(intervention_list)
+       
+       var connective2 = 'we hope to glean insight into'
+       
+       var outcome_list = ['your relationship with your mother', 'the functioning of Wikipedia', 'the purpose of hipsters', 'aboriginal societies', 'the development of language', 'why people wear hats', 'the evolution of fingers'];
+       
+       var random_outcome = make_random_var(outcome_list)
+      
+       var science_comment_list = [random_science_opener, random_research_animal, connective, random_intervention, connective2, random_outcome]
+       
+       var science_comment = science_comment_list.join(" ")
+       
+       document.write(('"' + science_comment + '."').fontsize(5));
+   
+</script>
+</html>
