@@ -8,21 +8,19 @@
 <script type="text/javascript">
    //javascript goes in here
    
-   //making random variable from list
+  //This is the main function in our program: it takes a list of words or phrases and chooses a random element from that list. We use it to make a bunch of variables which we will later concatenate to make our Generated Comment.
        function make_random_var(list) {
            return list[Math.floor(Math.random() * list.length)];
        }  
 
   function make_random_comment(){
-  
+
+// Now we use that function many times to select random elements of our various lists. First we populate a list and name it as a variable called "<name>_list", then we pick a random element from that list using make_random_var and name it as a variable called "random_<name>"
+     
        var business_opener_list = ['The secret to doing business is ', 'Our revolutionary framework focusses on ', 'Our key insight is centered on ', 'It turns out that all successful businesses understand '];
        
        var random_business_opener = make_random_var(business_opener_list);
-       
-   
-   //texts
 
-   
    var acronym_list_1 = ['Big', 'Huge', 'Great']
    var random_acronym_1 = make_random_var(acronym_list_1);
    
@@ -35,9 +33,7 @@
    var acronym_list_4 = ['Goals', 'Targets', 'Objectives'];
      var random_acronym_4 = make_random_var(acronym_list_4);
      
-   //This could be improved (in terms of coding-learning) by making a system whereby the acronym can have different numbers of letters, and the variable is able to deal with that. How would that work? Maybe the randomiser decides whether a "position" is included in the list, and then the words that are going into the acronym are put in another list, and then we iterate over that second list and run through to the end.
-   //honestly it will also probably work if we just put empty strings as an option for some of the acronym-positions, because ''[0] should just not return anything.
-   //ok, not quite, because ''[0] is undefined. But could solve that with something like if [varposition] != undefined then...
+   // This could be improved (in terms of coding-learning and generalisability) by making a system whereby the acronym can have different numbers of letters [currently it must have exactly four letters], and the programme is able to deal with that. How would that work? Maybe the randomiser decides whether a "position" is included in the list, and then the words that are going into the acronym are put in another list, and then we iterate over that second list and run through to the end.
    
    var random_acronym = random_acronym_1[0] + random_acronym_2[0] + random_acronym_3[0] + random_acronym_4[0]
    
@@ -76,7 +72,9 @@
    var random_m_word_3 = m_word_list[Math.floor((m_word_list.length - 2) + Math.random() * 2)];
    
    var m_word_sentence = " the three m's: " + random_m_word + ", " + random_m_word_2 + ", and " + random_m_word_3
-   
+  
+// The following code (randomising between a list of [0,1] seems crazily wasteful/inefficient-- we really just want the system to make a binary choice between two types of sentence structure. What's the better way to do that?
+
    var letter_list = [0,1]
    var p_or_m = letter_list[Math.floor(Math.random() * 2)];
 
@@ -85,41 +83,25 @@
       }else{
       p_or_m_sentence = m_word_sentence
       };
-   
-/*   //tuples
-   var sentence_opener_list = [["If there's one ", " it's that "], ["Surely the ", " is that "], ["One could certainly argue that the ", " is that "]];
-   var random_sentence_opener = sentence_opener_list[Math.floor(Math.random() * sentence_opener_list.length)];
-   
-   //normal
-   var key_emphasis_list = ['key ', 'primary ', 'main ', '', '', ''];
-   var random_key_emphasis = key_emphasis_list[Math.floor(Math.random() * key_emphasis_list.length)];
-   
-   //ejection
-   var ejected_political_value = political_value_list.indexOf(random_political_value);
-   if(ejected_political_value != -1) {
-	political_value_list.splice(ejected_political_value, 1);
-   };
-   var random_political_value_2 = political_value_list[Math.floor(Math.random() * political_value_list.length)]; */
-
-//clearly wasteful way to do this -- how to just get math-random to pick a number for me?
   
    var choice_list = [0,1]
    var choice = choice_list[Math.floor(Math.random() * 2)];
-   
+
+// Choosing between our two possible types of Random Startup Sentence
+
    if (choice == 0) {
    business_book_comment = random_business_opener + random_acronym + "s -- " + random_acronym_1 + " " + random_acronym_2 + " " + random_acronym_3 + " " + random_acronym_4
    }else{
    business_book_comment = random_business_opener + p_or_m_sentence
    };
    return business_book_comment;
- 
  }
 
-	    // this will run as soon as the page is started
+// This is the "first running" of the function. It will run as soon as the page is loaded.
        $(function(){
          $("#output").text('"' + make_random_comment() + '."');
                 
-         // this will run on every button click
+// This is the "regenerate" button. When the reader wants another random comment (in the same genre as the first) they click the button and a new comment is generated. It will run on every button click.
          $("#regenerate").click(function(){
              $("#output").text('"' + make_random_comment() + '."');
         });
