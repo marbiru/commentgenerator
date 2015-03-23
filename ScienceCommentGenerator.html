@@ -8,11 +8,14 @@
 <script type="text/javascript">
    //javascript goes in here
    
-   //making random variable from list
+   //This is the main function in our program: it takes a list of words or phrases and chooses a random element from that list. We use it to make a bunch of variables which we will later concatenate to make our Generated Comment.
+   
        function make_random_var(list) {
            return list[Math.floor(Math.random() * list.length)];
        }
-       
+   
+   // Now we use that function many times to select random elements of our various lists. First we populate a list and name it as a variable called "<name>_list", then we pick a random element from that list using make_random_var and name it as a variable called "random_<name>"
+   
    function make_random_comment(){
     
        var investigating_list = ['investigating', 'understanding', 'modelling', 'researching'];
@@ -39,19 +42,19 @@
        
        var random_outcome = make_random_var(outcome_list)
       
+      // Now we've chosen random elements of all the relevant lists, all that's left is to concatenate those elements to make our Generated Comment. 
+      
        var science_comment_list = [random_science_opener, random_research_animal, connective, random_intervention, connective2, random_outcome]
        
        var science_comment = science_comment_list.join(" ")
        return science_comment;
     }
-     
-       // document.write(('"' + science_comment + '."').fontsize(5));
        
-       // this will run as soon as the page is started
+       // This is the "first running" of the function. It will run as soon as the page is loaded.
        $(function(){
          $("#output").text('"' + make_random_comment() + '."');
                 
-         // this will run on every button click
+         // This is the "regenerate" button. When the reader wants another random comment (in the same genre as the first) they click the button and a new comment is generated. It will run on every button click
          $("#regenerate").click(function(){
              $("#output").text('"' + make_random_comment() + '."');       
          });
