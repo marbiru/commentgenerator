@@ -1,16 +1,20 @@
 <html>
+<head>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
 <body>
    <!--maybe divs and stuff in here-->
-</body>
 <script type="text/javascript">
    //javascript goes in here
    
-   
    //making random variable from list
-   function make_random_var(list) {
-       return list[Math.floor(Math.random() * list.length)];
-       }
-    
+       function make_random_var(list) {
+           return list[Math.floor(Math.random() * list.length)];
+       }  
+
+  function make_random_comment(){
+  
        var business_opener_list = ['The secret to doing business is ', 'Our revolutionary framework focusses on ', 'Our key insight is centered on ', 'It turns out that all successful businesses understand '];
        
        var random_business_opener = make_random_var(business_opener_list);
@@ -20,16 +24,16 @@
 
    
    var acronym_list_1 = ['Big', 'Huge', 'Great']
-   var random_acronym_1 = acronym_list_1[Math.floor(Math.random() * acronym_list_1.length)];
+   var random_acronym_1 = make_random_var(acronym_list_1);
    
    var acronym_list_2 = ['Big', 'Huge', 'Great', 'Bold']
-     var random_acronym_2 = acronym_list_2[Math.floor(Math.random() * acronym_list_2.length)];
+     var random_acronym_2 = make_random_var(acronym_list_2);
      
    var acronym_list_3 = ['Audacious', 'Effective', 'Outrageous']
-     var random_acronym_3 = acronym_list_3[Math.floor(Math.random() * acronym_list_3.length)];
+     var random_acronym_3 = make_random_var(acronym_list_3);
      
    var acronym_list_4 = ['Goals', 'Targets', 'Objectives'];
-     var random_acronym_4 = acronym_list_4[Math.floor(Math.random() * acronym_list_4.length)];
+     var random_acronym_4 = make_random_var(acronym_list_4);
      
    //This could be improved (in terms of coding-learning) by making a system whereby the acronym can have different numbers of letters, and the variable is able to deal with that. How would that work? Maybe the randomiser decides whether a "position" is included in the list, and then the words that are going into the acronym are put in another list, and then we iterate over that second list and run through to the end.
    //honestly it will also probably work if we just put empty strings as an option for some of the acronym-positions, because ''[0] should just not return anything.
@@ -98,14 +102,58 @@
    var random_political_value_2 = political_value_list[Math.floor(Math.random() * political_value_list.length)]; */
 
 //clearly wasteful way to do this -- how to just get math-random to pick a number for me?
+  
    var choice_list = [0,1]
    var choice = choice_list[Math.floor(Math.random() * 2)];
    
    if (choice == 0) {
-   document.write(('"' + random_business_opener + random_acronym + "s -- " + random_acronym_1 + " " + random_acronym_2 + " " + random_acronym_3 + " " + random_acronym_4 + ".\"").fontsize(5))
+   business_book_comment = random_business_opener + random_acronym + "s -- " + random_acronym_1 + " " + random_acronym_2 + " " + random_acronym_3 + " " + random_acronym_4
    }else{
-   document.write(('"' + random_business_opener + p_or_m_sentence +  ".\"").fontsize(5))
+   business_book_comment = random_business_opener + p_or_m_sentence
    };
-   
+   return business_book_comment;
+ 
+ }
+
+	    // this will run as soon as the page is started
+       $(function(){
+         $("#output").text('"' + make_random_comment() + '."');
+                
+         // this will run on every button click
+         $("#regenerate").click(function(){
+             $("#output").text('"' + make_random_comment() + '."');
+        });
+      });
+
 </script>
+
+<!--
+element, class, id
+"body", ".important", "#output"
+-->
+
+<style>
+body {
+    font-size: 12px;
+}
+
+#output {
+    font-size: 18px;
+}
+
+</style>
+
+<div id="output"></div>
+<br />
+<input type="button" id="regenerate" name="regenerate" value="Regenerate!"></button>
+
+<!--
+name: the name used on the form
+id: the name on the page, which is used for CSS, javascript, etc.
+class: a category the element can be in
+value: a displayed value shown to the user (usually a title of a button, etc.)
+
+-->
+
+</body>
 </html>
