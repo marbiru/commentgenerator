@@ -8,14 +8,17 @@
 <script type="text/javascript">
    //javascript goes in here
    
-   //making random variable from list
+//This is the main function in our program: it takes a list of words or phrases and chooses a random element from that list. We use it to make a bunch of variables which we will later concatenate to make our Generated Comment.
+   
        function make_random_var(list) {
            return list[Math.floor(Math.random() * list.length)];
        }  
 
   function make_random_comment(){
 
-   // Building the SaaS sentence
+   // There are three sentence "types" in this generator: the Software as a Service (SaaS) type, the X of Y type, and the Social Local Mobile type
+   
+   // First we build the SaaS type.
   
     var vapid_openings_list = ["We're fundamentally changing how you", "We're creating a paradigm shift in how you", "We're driving a new paradigm in how you", "We're revolutionizing how you"];
    var random_vapid_opening = make_random_var(vapid_openings_list)
@@ -43,7 +46,7 @@
    
    
    
-   // Creating the general comment array
+   // Here we create an array which will eventually house all three possible sentences (of the three different types), then we will randomly choose one of them.
    
 	var startup_comment_array = [ ];
 	
@@ -51,7 +54,7 @@
 	
 	
 	
-	// Building the X of Y sentence
+	// Here we build the second type of Startup Comment, the "X of Y" type
    
      var vapid_connectives_list =["we're building the ", "we're launching the ", "we're designing the ", "we've created the "];
     var random_vapid_connective = make_random_var(vapid_connectives_list);
@@ -64,7 +67,7 @@
 
 
 
-   // Building the Solomo sentence
+   // Here we build the third type of Startup Comment, the Social Local Mobile type
    
    var solomo_sentence_list = [["We're taking the best of ", " and the best of "], 
    ["We're moving beyond ", " and into "], ["We're putting the ", " back into "], ["We're working at the nexus of ", " and "]];
@@ -94,20 +97,20 @@
 	startup_comment_array.push(solomo_sentence);
 	
 	
-	// Finally, the startup sentence gets generated
+	// Finally, we pick one of the 3 sentences we've generated.
 		
 	var random_startup_comment = make_random_var(startup_comment_array);
 	
-	//stripping whitespace at end
+	//This regex strips whitespace from the end of a comment
 	var random_startup_comment = random_startup_comment.replace(/\s+$/g,'');
         return random_startup_comment;
     }
 
-	    // this will run as soon as the page is started
+       // This  will run as soon as the page is loaded.
        $(function(){
          $("#output").text('"' + make_random_comment() + '."');
                 
-         // this will run on every button click
+         // This is the "regenerate button", will run on mouse click
          $("#regenerate").click(function(){
              $("#output").text('"' + make_random_comment() + '."');
         });
